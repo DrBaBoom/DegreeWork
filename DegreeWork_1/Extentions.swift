@@ -16,7 +16,8 @@ extension Int {
 
 extension Position {
     var cgpoint: CGPoint {
-        get { return CGPoint(x: self.x * View.scaleMap, y: self.y * View.scaleMap + 23 * View.scaleMap) }
+        get { return CGPoint(x: self.x * View.scaleMap,
+                             y: self.y * View.scaleMap + 5 * View.scaleMap) }
     }
 }
 

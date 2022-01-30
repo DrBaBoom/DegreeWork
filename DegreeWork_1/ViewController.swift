@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var scrollViewView: View!
+    
     var from: Station? = nil
     var to: Station? = nil
     var state: State = .normal
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
         if state == .normal {
             return
         }
-        if let touchLoc = sender?.location(in: view) {
+        if let touchLoc = sender?.location(in: scrollViewView) {
             var minimalDist = 15.0
             var closestStation: Station? = nil
             for s in Subway.getSubway() {
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
                 }
        
                 print(cclosestStation)
-                if let myView = view as? View {
+                if let myView = scrollViewView {
                     myView.redraw()
                 }
                 
