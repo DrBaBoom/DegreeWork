@@ -14,7 +14,7 @@ class View: UIView {
     static var scaleMap = 0.0
     
     override func draw(_ rect: CGRect) {
-        View.scaleMap = self.frame.width / 80
+        View.scaleMap = self.frame.width / 85
         let subway = Subway.getSubway()
         
         for (indexColor, l) in lineNameList.enumerated() {
