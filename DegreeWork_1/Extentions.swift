@@ -26,3 +26,4 @@ extension CGPoint {
         return sqrt(pow(anotherPoint.x - self.x, 2.0) + pow(anotherPoint.y - self.y, 2.0))
     }
 }
+

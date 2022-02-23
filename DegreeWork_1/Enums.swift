@@ -10,5 +10,5 @@ import Foundation
 enum State {
     case normal
     case startStationSelection
-    case endSattionSelection
+    case endSatationSelection
 }

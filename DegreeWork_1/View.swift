@@ -9,13 +9,18 @@ import UIKit
 
 class View: UIView {
     
+    var path: [Station]? = nil
     let lineNameList = ["blueLine", "greenLine", "yellowLine", "redLine", "pinkLine"]
     let colorList: [UIColor] = [.blue, .green, .orange, .red, .purple]
-    static var scaleMap = 0.0
+    static var scaleMap = 0.0 // сколько точек в одном квадрате
     
     override func draw(_ rect: CGRect) {
-        View.scaleMap = self.frame.width / 85
+        View.scaleMap = self.bounds.width / 85
         let subway = Subway.getSubway()
+        
+        if path != nil {
+            drawPath(listOfStations: path!)
+        }
         
         for (indexColor, l) in lineNameList.enumerated() {
             let stationsOfLine = subway.filter {s in s.lineName == l}
@@ -85,6 +90,19 @@ class View: UIView {
             }
         }
         drawPie(center: station.position.cgpoint, radius: 8.cgfloat, colors: colors)
+    }
+    
+    func drawPath(listOfStations: [Station]) {
+        if listOfStations.count > 1 {
+            let line = UIBezierPath()
+            line.move(to: listOfStations[0].position.cgpoint)
+            for i in 1 ..< listOfStations.count {
+                line.addLine(to: listOfStations[i].position.cgpoint)
+            }
+            UIColor.gray.setStroke()
+            line.lineWidth = 8
+            line.stroke()
+        }
     }
     
     func redraw() {

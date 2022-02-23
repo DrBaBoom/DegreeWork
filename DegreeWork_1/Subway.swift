@@ -80,10 +80,16 @@ class Subway {
 //    Алгоритм Деикстра по нахождению кротчайшего пути в граффе
     static func shortestPath (startStation: Station, destination: Station) -> [Station] {
         
+        for s in getSubway() {
+            s.distance = Int.max
+            s.shortestPath = []
+            s.visited = false
+        }
+        
         var currentStation = startStation
         currentStation.visited = true
         currentStation.distance = 0
-        currentStation.shortestPath.append(startStation)
+        currentStation.shortestPath = [startStation]
         
         var toVisit = subway
         
