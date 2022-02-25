@@ -15,4 +15,13 @@ class Position {
         self.x = x
         self.y = y
     }
+    
+    static func +(a: Position, b:(Double, Double)) -> Position {
+        return Position(a.x + b.0, a.y + b.1)
+    }
+
+
+    static func -(a: Position, b:(Double, Double)) -> Position {
+        return Position(a.x - b.0, a.y - b.1)
+    }
 }
