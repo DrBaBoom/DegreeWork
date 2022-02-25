@@ -19,8 +19,9 @@ class Position {
     static func +(a: Position, b:(Double, Double)) -> Position {
         return Position(a.x + b.0, a.y + b.1)
     }
-}
 
-class Shift: Position {
-    
+
+    static func -(a: Position, b:(Double, Double)) -> Position {
+        return Position(a.x - b.0, a.y - b.1)
+    }
 }

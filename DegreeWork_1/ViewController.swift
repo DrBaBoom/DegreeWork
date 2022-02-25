@@ -28,8 +28,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         scrollView.delegate = self
-        scrollView.minimumZoomScale = 0.5
-        scrollView.maximumZoomScale = 2
         
         drawBorder(btn: btnFrom)
         
@@ -41,28 +39,33 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     
     override func viewDidAppear(_ animated: Bool) {
+        let heightOfLbl = 20.0
+        let widthOfLbl = 60.0
         
-        var pinkLineLbls: [CGPoint] = []
-        
-        for (index, s) in Consts.pink.enumerated() {
-            if 0...4 ~= index {
-                let newPos = s.1 + (1, 0)
-                pinkLineLbls.append(newPos.cgpoint)
+        for line in Consts.allLines {
+            for s in line {
+                let lbl = UILabel()
+                lbl.font = UIFont.systemFont(ofSize: 7)
+                let lblPoint: CGPoint
+                if s.lblLeft {
+                    lblPoint = (s.pos - s.shift).cgpoint - (widthOfLbl, 0)
+                    lbl.textAlignment = .right
+                } else {
+                    lblPoint = (s.pos + s.shift).cgpoint
+                }
+                lbl.frame = CGRect(x: lblPoint.x, y: lblPoint.y - heightOfLbl / 2,
+                                   width: widthOfLbl,
+                                   height: heightOfLbl)
+                lbl.text = s.name
+                lbl.numberOfLines = 0
+                scrollViewView.addSubview(lbl)
+                
+                
             }
         }
-        
-        let heightOfLbl = 20.0
-        for (index, lbcgPoint) in pinkLineLbls.enumerated() {
-            let lbl = UILabel()
-            lbl.font = UIFont.systemFont(ofSize: 7)
-            lbl.frame = CGRect(x: lbcgPoint.x, y: lbcgPoint.y - heightOfLbl / 2,
-                               width: 60,
-                               height: heightOfLbl)
-            lbl.text = Consts.pink[index].0
-            lbl.numberOfLines = 0
-            scrollViewView.addSubview(lbl)
-        }
     }
+    
+    
     
     
 
@@ -135,17 +138,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             btnTo.layer.borderWidth = 2
             btnTo.layer.borderColor = UIColor.red.cgColor
         }
-    }
-    
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollViewView
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        constrViewViewWidth.constant = view?.frame.width ?? 100
-        constrViewViewHeight.constant = view?.frame.height ?? 100
-        scrollViewView.setNeedsDisplay()
     }
     
 }

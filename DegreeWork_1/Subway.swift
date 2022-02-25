@@ -20,10 +20,10 @@ class Subway {
         return subway
     }
     
-    static private func createLine(of stationNamesAndPos: [(String, Position)], lineName: String) -> [Station] {
+    static private func createLine(of stationNamesAndPos: [StationOnLine], lineName: String) -> [Station] {
         var result = [Station]()
         for (index, s) in stationNamesAndPos.enumerated() {
-            let station = Station(name: s.0, lineName: lineName, placeOnMap: s.1)
+            let station = Station(name: s.name, lineName: lineName, placeOnMap: s.pos)
             result.append(station)
             
             if index - 1 >= 0 {
@@ -39,7 +39,6 @@ class Subway {
         st1.closestStations.append(st2)
         st2.closestStations.append(st1)
     }
-    
     
     static private func createSubway() -> [Station] {
         var result: [Station] = []
