@@ -10,22 +10,21 @@ import UIKit
 class View: UIView {
     
     var path: [Station]? = nil
-    let lineNameList = ["blueLine", "greenLine", "yellowLine", "redLine", "pinkLine"]
-    let colorList: [UIColor] = [.blue, .green, .orange, .red, .purple]
     static var scaleMap = 0.0 // сколько точек в одном квадрате
     
     override func draw(_ rect: CGRect) {
         View.scaleMap = self.bounds.width / 85
+        print(self.bounds.width)
         let subway = Subway.getSubway()
         
         if path != nil {
             drawPath(listOfStations: path!)
         }
         
-        for (indexColor, l) in lineNameList.enumerated() {
+        for (indexColor, l) in Consts.lineNameList.enumerated() {
             let stationsOfLine = subway.filter {s in s.lineName == l}
-            colorList[indexColor].setStroke()
-            colorList[indexColor].setFill()
+            Consts.colorList[indexColor].setStroke()
+            Consts.colorList[indexColor].setFill()
             let path = UIBezierPath()
             
             for (i, s) in stationsOfLine.enumerated() {
@@ -50,7 +49,7 @@ class View: UIView {
                     }
                     UIColor.black.setStroke()
                     circle.stroke()
-                    colorList[indexColor].setStroke()
+                    Consts.colorList[indexColor].setStroke()
                 }
                 
                 let circle = UIBezierPath(ovalIn: CGRect(x: point.x - 5,
@@ -84,7 +83,7 @@ class View: UIView {
     func drawSuperStation(station: Station) {
         var colors: [UIColor] = []
         for s in station.closestStations {
-            let col = colorList[lineNameList.firstIndex(of: s.lineName)!]
+            let col = Consts.colorList[Consts.lineNameList.firstIndex(of: s.lineName)!]
             if !colors.contains(col) {
                 colors.append(col)
             }
@@ -99,7 +98,7 @@ class View: UIView {
             for i in 1 ..< listOfStations.count {
                 line.addLine(to: listOfStations[i].position.cgpoint)
             }
-            UIColor.gray.setStroke()
+            UIColor.green.setStroke()
             line.lineWidth = 8
             line.stroke()
         }

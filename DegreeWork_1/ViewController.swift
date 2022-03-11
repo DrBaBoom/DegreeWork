@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var btnMoreInfo: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewView: View!
     @IBOutlet weak var constrViewViewWidth: NSLayoutConstraint!
@@ -19,6 +20,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     var state: State = .startStationSelection
     var clickFrom = 0
     var clickTo = 0
+    var fullPath: [Station] = []
     
     @IBOutlet weak var btnFrom: UIButton!
     @IBOutlet weak var btnTo: UIButton!
@@ -27,7 +29,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        btnMoreInfo.alpha = 0
+        
         scrollView.delegate = self
+        scrollView.minimumZoomScale = 0.5
+        scrollView.maximumZoomScale = 2
         
         drawBorder(btn: btnFrom)
         
@@ -36,6 +42,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         view.addGestureRecognizer(tap)
     }
     
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollViewView
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,6 +98,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 if cclosestStation == from || cclosestStation == to {
                     return
                 }
+                fullPath = []
                 cclosestStation.isSelected = true
                 if state == .startStationSelection {
                     from?.isSelected = false
@@ -100,13 +110,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     btnTo.setTitle(cclosestStation.name, for: .normal)
                 }
                 
-                var path: [Station]? = nil
                 if from != nil && to != nil {
-                    path = Subway.shortestPath(startStation: from!, destination: to!)
-                    print(from!)
+                    fullPath = Subway.shortestPath(startStation: from!, destination: to!)
+                    btnMoreInfo.alpha = 1
                 }
                 if let myView = scrollViewView {
-                    myView.path = path
+                    myView.path = fullPath
                     myView.redraw()
                 }
                 
@@ -115,7 +124,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
     
     @IBAction func btnFromPushed(_ sender: Any) {
         state = .startStationSelection
@@ -137,6 +145,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             btnFrom.layer.borderWidth = 0
             btnTo.layer.borderWidth = 2
             btnTo.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? MoreInfo_VC, segue.identifier == "segMoreInfo" {
+            vc.path = fullPath
         }
     }
     
