@@ -19,6 +19,8 @@
 		DE804708279B1641001C2070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE804707279B1641001C2070 /* Assets.xcassets */; };
 		DE80470B279B1641001C2070 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE804709279B1641001C2070 /* LaunchScreen.storyboard */; };
 		DE804713279B169A001C2070 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE804712279B169A001C2070 /* Station.swift */; };
+		DE96BD6F27CA1CFC0005E3CD /* MoreInfo_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96BD6E27CA1CFC0005E3CD /* MoreInfo_VC.swift */; };
+		DE96BD7127CA238F0005E3CD /* SuperLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96BD7027CA238E0005E3CD /* SuperLabel.swift */; };
 		DEBDA3B727A3CE8A00667D3E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDA3B627A3CE8A00667D3E /* Enums.swift */; };
 		DEC8D678279C6F2A00072B50 /* Subway.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8D677279C6F2A00072B50 /* Subway.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		DE80470A279B1641001C2070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE80470C279B1641001C2070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE804712279B169A001C2070 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		DE96BD6E27CA1CFC0005E3CD /* MoreInfo_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfo_VC.swift; sourceTree = "<group>"; };
+		DE96BD7027CA238E0005E3CD /* SuperLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperLabel.swift; sourceTree = "<group>"; };
 		DEBDA3B627A3CE8A00667D3E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DEC8D677279C6F2A00072B50 /* Subway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,8 @@
 				DE5FA50A279F03540073C070 /* Consts.swift */,
 				DEC8D677279C6F2A00072B50 /* Subway.swift */,
 				DE804701279B163E001C2070 /* Main.storyboard */,
+				DE96BD7027CA238E0005E3CD /* SuperLabel.swift */,
+				DE96BD6E27CA1CFC0005E3CD /* MoreInfo_VC.swift */,
 				DE804707279B1641001C2070 /* Assets.xcassets */,
 				DE804709279B1641001C2070 /* LaunchScreen.storyboard */,
 				DE80470C279B1641001C2070 /* Info.plist */,
@@ -165,10 +171,12 @@
 				DE804706279B163E001C2070 /* DegreeWork_1.xcdatamodeld in Sources */,
 				DE804713279B169A001C2070 /* Station.swift in Sources */,
 				DE804700279B163E001C2070 /* ViewController.swift in Sources */,
+				DE96BD6F27CA1CFC0005E3CD /* MoreInfo_VC.swift in Sources */,
 				DE8046FC279B163E001C2070 /* AppDelegate.swift in Sources */,
 				DEBDA3B727A3CE8A00667D3E /* Enums.swift in Sources */,
 				DEC8D678279C6F2A00072B50 /* Subway.swift in Sources */,
 				DE624D0A279DC07100F9704E /* View.swift in Sources */,
+				DE96BD7127CA238F0005E3CD /* SuperLabel.swift in Sources */,
 				DE04665B27A1C5CF004E55B6 /* Extentions.swift in Sources */,
 				DE5FA509279EFF640073C070 /* Position.swift in Sources */,
 				DE5FA50B279F03540073C070 /* Consts.swift in Sources */,

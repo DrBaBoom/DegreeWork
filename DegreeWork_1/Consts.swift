@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct StationOnLine {
     var name: String
@@ -24,6 +25,8 @@ struct StationOnLine {
 class Consts {
     
     static let allLines = [blue, green, yellow, red, pink]
+    static let lineNameList = ["blueLine", "greenLine", "yellowLine", "redLine", "pinkLine"]
+    static let colorList: [UIColor] = [.blue, UIColor(red: 0, green: 128 / 255.0, blue: 0, alpha: 1), .orange, .red, .purple]
     
     static let blue: [StationOnLine] = [
         StationOnLine("Парнас", Position(35, 4), nil),
